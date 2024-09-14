@@ -39,7 +39,7 @@ function Cards() {
     }
     loadCards();
     return () => abortController.abort();
-  }, []);
+  }, [params.deckId]);
 
   if (error) {
     return <NotFound />;

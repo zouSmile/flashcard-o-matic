@@ -16,7 +16,7 @@ function EditDeck() {
       setDescription(deckResult.description);
     };
     fetchDeck();
-  }, []);
+  }, [params.deckId]);
 
   const handleNameChange = (event) => setName(event.target.value);
   const handleDescriptionChange = (event) => setDescription(event.target.value);

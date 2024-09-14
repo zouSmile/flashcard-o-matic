@@ -18,7 +18,7 @@ function CreateCard() {
       setDeckData(deckResult);
     };
     fetchDeck();
-  }, []);
+  }, [params.deckId]);
 
   const handleFrontChange = (event) => setFront(event.target.value);
   const handleBackChange = (event) => setBack(event.target.value);
