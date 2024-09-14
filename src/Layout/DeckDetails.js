@@ -28,6 +28,10 @@ function DeckDetails() {
     const result = window.confirm("Delete this card? You will not be able to recover it.");
     if (result) {
       await deleteCard(id);
+      setDeckData((currentDeck) => ({
+        ...currentDeck,
+        cards: currentDeck.cards.filter((card) => card.id !== id),
+      }))
     }
   }
 

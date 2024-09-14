@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import NavBar from "./NavBar";
-import { readCard, updateCard } from "../utils/api";
+import { readCard , updateCard } from "../utils/api";
 import React, { useEffect, useState } from "react";
 import CardForm from "./CardForm";
 
@@ -9,7 +9,9 @@ function EditCard() {
   const [front, setFront] = useState("");
   const [back, setBack] = useState("");
   const [deckName, setDeckName] = useState("");
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchCard = async () => {
@@ -26,8 +28,13 @@ function EditCard() {
 
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
-    await updateCard({ id: params.cardId, front, back });
-    navigate(`/decks/${params.deckId}`);
+    try {
+      await updateCard({ id: params.cardId, deckId: params.deckId, front, back });
+      navigate(`/decks/${params.deckId}`);
+    } catch (error) {
+      setError(error);
+      console.log(error);
+    }
   };
 
   return (

@@ -193,16 +193,17 @@ export async function readCard(cardId, signal) {
  * @returns {Promise<Error|*>}
  *  a promise that resolves to the updated card.
  */
+
 export async function updateCard(updatedCard, signal) {
   const url = `${API_BASE_URL}/cards/${updatedCard.id}`;
   const options = {
     method: "PUT",
     headers,
     body: JSON.stringify(updatedCard),
-    signal,
   };
   return await fetchJson(url, options, updatedCard);
 }
+
 
 /**
  * Deletes the card with the specified `cardId`.
